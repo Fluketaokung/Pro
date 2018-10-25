@@ -1,0 +1,14 @@
+[Thu, 25 Oct 18 16:20:06 +0700][ERROR] [0]: Table 'users' doesn't exist in database when dumping meta-data for User
+
+[Thu, 25 Oct 18 16:20:11 +0700][ERROR] [0]: Table 'users' doesn't exist in database when dumping meta-data for User
+
+[Thu, 25 Oct 18 16:21:40 +0700][ERROR] [0]: Table 'users' doesn't exist in database when dumping meta-data for User
+
+[Thu, 25 Oct 18 16:21:55 +0700][ERROR] [0]: Table 'users' doesn't exist in database when dumping meta-data for User
+
+[Thu, 25 Oct 18 16:22:17 +0700][ERROR] [0]: Table 'users' doesn't exist in database when dumping meta-data for User
+
+[Thu, 25 Oct 18 16:31:48 +0700][ERROR] [22001]: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'password' at row 1
+
+[Thu, 25 Oct 18 16:54:48 +0700][ERROR] [0]: Table 'user' doesn't exist in database when dumping meta-data for User
+

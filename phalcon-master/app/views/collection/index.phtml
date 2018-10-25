@@ -1,0 +1,27 @@
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <th data-field="name"> Name </th>
+            <th data-field="type"> Type </th>
+            <th data-field="description"> Description </th>
+            <th data-field="address"> Address </th>   
+            <th data-field="phone"> Phone </th>
+            <th data-field="contact_person"> Contact </th>        
+            
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($data as $item){?>
+            <tr>
+            <td><a href="<?php echo $this->url->getBaseUri().'collection/object' ?>" class="btn btn-danger navbar-btn"><?php echo $item->name ?></a></td>
+                <td><?php echo $item->type ?></td>
+                <td><?php echo $item->description ?></td>
+                <td><?php echo $item->address ?></td>
+                <td><?php echo $item->phone ?></td>
+                <td><?php echo $item->contact_person ?></td>
+                
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>      

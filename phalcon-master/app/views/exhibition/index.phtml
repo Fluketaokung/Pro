@@ -1,0 +1,23 @@
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <th data-field="name"> Exhibition </th>
+            <th data-field="start_date"> Start </th>
+            <th data-field="end_date"> End </th>
+            <th data-field="number_of_people"> number </th>           
+            
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($data as $item){?>
+            <tr>
+                <td><a href="<?php echo $this->url->getBaseUri().'exhibition/description?name='.$item->name; ?>" class="btn btn-danger navbar-btn"><?php echo $item->name ?></a></td>
+                <td><?php echo $item->start_date ?></td>
+                <td><?php echo $item->end_date ?></td>
+                <td><?php echo $item->number_of_people ?></td>
+                
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>      

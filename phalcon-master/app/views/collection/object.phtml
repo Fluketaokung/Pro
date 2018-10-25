@@ -1,0 +1,37 @@
+<?php 
+$name=$this->session->get('name');
+?>
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <th data-field="id_no"> ID </th>
+            <th data-field="picture"> Name </th> 
+            <th data-field="artist_name"> Artist </th>
+            <th data-field="year"> Year </th>
+            <th data-field="title"> Title </th> 
+            <th data-field="description"> Description </th>  
+            <th data-field="type"> Type </th>  
+            <th data-field="epoch"> Epoch </th>
+            <th data-field="origin"> Origin </th>                                            
+            <th data-field="collection_name"> Collection </th>                               
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($data as $item){?>
+            <tr>
+                <td><?php echo $item->id_no ?></td>
+                <td><?php echo $item->picture ?></td>
+                <td><?php echo $item->artist_name ?></td>
+                <td><?php echo $item->year ?></td>
+                <td><?php echo $item->title ?></td>
+                <td><?php echo $item->description ?></td>
+                <td><?php echo $item->type ?></td>
+                <td><?php echo $item->epoch ?></td>
+                <td><?php echo $item->origin ?></td>
+                <td><?php echo $item->collection_name ?></td>
+                
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>      
