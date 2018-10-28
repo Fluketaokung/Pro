@@ -16,11 +16,13 @@ $name=$this->session->get('name');
     <tbody>
         <?php foreach($data as $item){?>
             <tr>
-                <td><a href="<?php echo $this->url->getBaseUri().'exbibition/description' ?>" class="btn btn-danger navbar-btn"><?php echo $item->name ?></a></td>
-                <td><?php echo $item->start_date ?></td>
-                <td><?php echo $item->end_date ?></td>
+                <?php foreach($data as $item){ ?>
+
+                    <td><a href="<?php echo $this->url->getBaseUri().'exbibition/description' ?>" class="btn btn-danger navbar-btn"><?php $ex=Art::findFirst("'$item->id_no' = id_no"); echo $ex->name ?></a></td>
+                    <!-- <td><?php echo $item->start_date ?></td>
+                    <td><?php echo $item->end_date ?></td> -->
                 
-                
+                <?php } ?>
             </tr>
         <?php } ?>
     </tbody>

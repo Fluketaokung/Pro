@@ -1,0 +1,30 @@
+<?php 
+$name=$this->session->get('name');
+?>
+
+<table data-toggle="table" class="table">
+    <tbody>
+        <?php foreach($data as $item){?>
+            <tr>
+                <!-- <td><?php echo $item->id_no ?></td>
+                <td><?php echo $item->picture ?></td>
+                <td><?php echo $item->artist_name ?></td>
+                <td><?php echo $item->year ?></td>
+                <td><?php echo $item->title ?></td>
+                <td><?php echo $item->description ?></td>
+                <td><?php echo $item->type ?></td>
+                <td><?php echo $item->epoch ?></td>
+                <td><?php echo $item->origin ?></td>
+                <td><?php echo $item->collection_name ?></td> -->
+                <?php echo $item->name ?>
+            <div class="form-group">  
+            <img style="width:100px; height:100px" src="<?php echo $this->url->getBaseUri().'public/img/database/'.$item->picture; ?>">
+            </div> 
+            </tr>
+               
+                
+                
+        <?php } ?>
+    </tbody>
+    
+</table>      

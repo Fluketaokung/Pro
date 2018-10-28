@@ -1,9 +1,9 @@
 <?php
 use Phalcon\Mvc\View;
-class ExhibitionController extends ControllerBase{
+class ArtistController extends ControllerBase{
  
     public function indexAction(){
-        $ex=Exhibition::find();
+        $ex=Artist::find();
         $this->view->data=$ex;
     }
 
@@ -12,8 +12,9 @@ class ExhibitionController extends ControllerBase{
     		$this->response->redirect('authen');   
     } 
 
-    public function objectAction(){
-        $ex=Borrowed::find();
+    public function PictureAction(){
+        $cn=$this->request->get('name');
+        $ex=Artist::find("name = '$cn'");
         $this->view->data=$ex;
     }
 

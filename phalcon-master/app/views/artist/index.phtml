@@ -1,0 +1,27 @@
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <th data-field="name"> Name </th>
+            <th data-field="country_of_origin"> Nationality </th>
+            <th data-field="dateborn"> Born </th>
+            <th data-field="date_died "> Died  </th>
+            <th data-field="epoch"> Epoch </th>
+            <th data-field="main_style"> Main_style </th>   
+            <th data-field="description"> Description </th>                  
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($data as $item){?>
+            <tr>
+                <td><a href="<?php if($item->picture != Null) echo $this->url->getBaseUri().'artist/picture?name='.$item->name; ?>" class="btn btn-danger navbar-btn"><?php echo $item->name ?></a></td>
+                <td><?php echo $item->country_of_origin ?></td>
+                <td><?php echo $item->date_born ?></td>
+                <td><?php echo $item->date_died ?></td>
+                <td><?php echo $item->epoch ?></td> 
+                <td><?php echo $item->main_style ?></td>
+                <td><?php echo $item->description ?></td>             
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>      

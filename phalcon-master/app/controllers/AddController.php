@@ -5,7 +5,7 @@ class AddController extends ControllerBase{
   public function indexAction(){
     if($this->request->isPost()){
       $photoUpdate='';
-      if($this->request->hasFiles() != true){
+      if($this->request->hasFiles() == true){
         $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
         $uploads = $this->request->getUploadedFiles();
         $isUploaded = false;			
@@ -16,15 +16,21 @@ class AddController extends ControllerBase{
             ($upload->moveTo($path)) ? $isUploaded = true : $isUploaded = false;
           }
         }
-        if($isUploaded)  $photoUpdate=$photoName ;
+        if($isUploaded)  $photoUpdate=$photoName;
+        
       }
-      $temp=new Event();
+      $temp=new Art();
+      $temp->id_no=trim($this->request->getPost('id'));
+      $temp->epoch=trim($this->request->getPost('epoch'));
+      $temp->origin=trim($this->request->getPost('origin'));
+      $temp->description=trim($this->request->getPost('description'));
+      $temp->title=trim($this->request->getPost('title'));
+      $temp->type=trim($this->request->getPost('type'));
       $temp->name=trim($this->request->getPost('name'));
-      $temp->date=trim($this->request->getPost('day'));
-      $temp->detail=trim($this->request->getPost('detail'));
       $temp->picture=$photoUpdate;
       $temp->save();
-      $this->response->redirect('event');
+      $this->response->redirect('index');
+      
     }
   
   }
