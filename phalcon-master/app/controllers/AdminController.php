@@ -1,9 +1,14 @@
 <?php
 use Phalcon\Mvc\View;
-class ArtController extends ControllerBase{
+class AdminController extends ControllerBase{
  
     public function indexAction(){
-        
+        $cn = $this->session->get('memberEmail');
+        $ex=Admin::findfirst("username = '$cn'");
+        if($cn != $ex->username){
+            $this->response->redirect('index');
+        }
+        $this->view->data=$ex;
     }
 
     public function typeAction(){

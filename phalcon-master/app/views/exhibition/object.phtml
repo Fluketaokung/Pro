@@ -5,26 +5,61 @@ $name=$this->session->get('name');
 <table data-toggle="table" class="table">
     <thead>
         <tr>
-            <th data-field="name"> Exhibition </th>
-            <th data-field="start_date"> Start </th>
-            <th data-field="end_date"> End </th>
-            <th data-field="number_of_people"> number </th>           
-            <th></th>
-            <th></th>
+            <th data-field="id_no"> ID </th>
+            <th data-field="title"> Title </th>  
+            <th data-field="artist_name"> Artist_ </th>
+            <th data-field="year"> Year </th>    
+            <th data-field="description"> Description </th>        
+            <th data-field="type"> Type </th>
+            <th data-field="epoch"> Epoch </th>             
+            <th data-field="origin"> Origin </th>
+            <th data-field="collection_name"> Collection </th>        
+            
         </tr>
     </thead>
     <tbody>
-        <?php foreach($data as $item){?>
+        <?php foreach($data as $item2){
+            $t = $item2->end_date;
+            $ex=Borrowed::find();
+            foreach($ex as $ex2){
+                $item=Art::findfirst("id_no = '$ex2->id_no'");
+                $t2 = $ex2->date_returned;
+                $show = (strtotime($t2) - strtotime($t))/  ( 60 * 60 * 24 );
+                if($show >= 0){
+            ?>
+        
+            <tr>               
+                <td><a href="<?php echo $this->url->getBaseUri().'collection/picture?picture='.$item->id_no; ?>" class="btn btn-danger navbar-btn"><?php echo $item->id_no ?></a></td>               
+                <td><?php echo $item->title ?></td>
+                <td><?php echo $item->artist_name ?></td>
+                <td><?php echo $item->year ?></td>
+                <td><?php echo $item->description ?></td>
+                <td><?php echo $item->type ?></td>
+                <td><?php echo $item->epoch ?></td>
+                <td><?php echo $item->origin ?></td>
+                <td><?php echo $item->collection_name ?></td>
+            </tr>        
+        <?php }
+        } 
+        } ?>
+    </tbody>
+    <tbody>
+        <?php foreach($data as $item){
+            ?>
             <tr>
-                <?php foreach($data as $item){ ?>
-
-                    <td><a href="<?php echo $this->url->getBaseUri().'exbibition/description' ?>" class="btn btn-danger navbar-btn"><?php $ex=Art::findFirst("'$item->id_no' = id_no"); echo $ex->name ?></a></td>
-                    <!-- <td><?php echo $item->start_date ?></td>
-                    <td><?php echo $item->end_date ?></td> -->
                 
-                <?php } ?>
-            </tr>
+                <td><a href="<?php echo $this->url->getBaseUri().'collection/picture?picture='.$item->name; ?>" class="btn btn-danger navbar-btn"><?php echo $item->name ?></a></td>               
+    
+                <!-- <td><?php echo $item->artist_name ?></td>
+                <td><?php echo $item->year ?></td>
+                <td><?php echo $item->description ?></td>
+                <td><?php echo $item->type ?></td>
+                <td><?php echo $item->epoch ?></td>
+                <td><?php echo $item->origin ?></td>
+                <td><?php echo $item->collection_name ?></td>
+                 -->
+            </tr>        
         <?php } ?>
     </tbody>
+    
 </table>      
- </form>

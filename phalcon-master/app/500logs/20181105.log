@@ -1,0 +1,8 @@
+[Mon, 05 Nov 18 17:41:04 +0700][ERROR] [0]: Scanning error before 'cpe.com LIMIT :A...' when parsing: SELECT [Admin].* FROM [Admin] WHERE SFD@cpe.com LIMIT :APL0: (60)
+
+[Mon, 05 Nov 18 17:42:51 +0700][ERROR] [0]: Scanning error before 'cpe.com LIMIT :A...' when parsing: SELECT [Admin].* FROM [Admin] WHERE SFD@cpe.com LIMIT :APL0: (60)
+
+[Mon, 05 Nov 18 17:43:03 +0700][ERROR] [0]: Scanning error before 'cpe.com LIMIT :A...' when parsing: SELECT [Admin].* FROM [Admin] WHERE SFD@cpe.com LIMIT :APL0: (60)
+
+[Mon, 05 Nov 18 17:43:05 +0700][ERROR] [0]: Scanning error before 'cpe.com LIMIT :A...' when parsing: SELECT [Admin].* FROM [Admin] WHERE SFD@cpe.com LIMIT :APL0: (60)
+

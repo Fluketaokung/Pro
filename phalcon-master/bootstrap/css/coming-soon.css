@@ -42,7 +42,7 @@ body {
   padding-bottom: 3rem;
 }
 
-.masthead .masthead-bg {
+.masthead .bg-masthead {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -88,7 +88,7 @@ body {
     width: 40.5rem;
     padding-bottom: 0;
   }
-  .masthead .masthead-bg {
+  .masthead .bg-masthead {
     min-height: 0;
     transform: skewX(-8deg);
     transform-origin: top right;

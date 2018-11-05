@@ -12,7 +12,7 @@ class ArtistController extends ControllerBase{
     		$this->response->redirect('authen');   
     } 
 
-    public function PictureAction(){
+    public function pictureAction(){
         $cn=$this->request->get('name');
         $ex=Artist::find("name = '$cn'");
         $this->view->data=$ex;

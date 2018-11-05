@@ -18,7 +18,7 @@ class CollectionController extends ControllerBase{
         $this->view->data=$ex;
     }
 
-    public function PictureAction(){
+    public function pictureAction(){
         $cn=$this->request->get('picture');
         $ex=Art::find("picture = '$cn'");
         $this->view->data=$ex;

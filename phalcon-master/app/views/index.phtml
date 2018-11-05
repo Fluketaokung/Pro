@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Phalcon PHP Framework</title>
     <?php echo $this->assets->outputCss('styles'); ?>    
-    <?php echo $this->assets->outputJs('scripts'); ?> 
+    <?php echo $this->assets->outputJs('scripts'); ?>
   </head>
     <body id="page-top" >
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger text-white" href="#page-top">ART MUSEUM</a>
+      <div id="logo">
+            <a href="#page-top"><img src="img/logo.png" alt="" title="" /></a>
+            </div>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -35,19 +37,21 @@
               <a class="nav-link text-white py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo $this->url->getBaseUri(); ?>artist">Artist</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link text-white py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo $this->url->getBaseUri(); ?>profile"><?php echo $this->session->get('memberEmail');?></a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link text-white py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo $this->url->getBaseUri(); ?>add">Add</a>
             </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link text-white py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo $this->url->getBaseUri(); ?>profile"><?php echo $this->session->get('memberEmail');?></a>
+            </li>
           </ul>
-           <ul class="navbar-nav  navbar-right">     
-   	<?php if($this->session->has('memberAuthen')) {?> 
-     
+           <ul class="navbar-nav  navbar-right">    
+    <?php if($this->session->has('memberAuthen')) {?>
+      <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link text-white py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?php echo $this->url->getBaseUri(); ?>admin">Admin</a>
+            </li>
    
-      
+     
      <li class="nav-item mx-0 mx-lg-1">
-     		<a  class="btn btn-danger navbar-btn" href="authen/signOut"> Logout </a> 
+            <a  class="btn btn-danger navbar-btn" href="authen/signOut"> Logout </a>
      </li>  
     <?php } else {?>
       <li class="nav-item mx-0 mx-lg-1">
@@ -56,27 +60,28 @@
      <li class="nav-item mx-0 mx-lg-1">
        <a href="authen/signUp" class="btn btn-outline-info"> Sign Up </a>
       </li>
+      
       <?php }?>
     </ul>
         </div>
       </div>
     </nav>
-
+ 
     <!-- Header -->
    
     <header class="masthead bg-primary text-white">
        <div class="container"><?php echo $this->getContent(); ?></div>      
     </header>
-
+ 
    
     <!-- Footer -->  
-
+ 
     <div class="copyright py-4 text-center text-black">
       <div class="container">
-        <small>CPE Lab &copy; CPE25</small>
+        <small>ART MUSEUM &copy; CPE25</small>
       </div>
     </div>
-
+ 
   </body>
-  
+ 
 </html>

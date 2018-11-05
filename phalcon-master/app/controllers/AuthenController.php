@@ -43,7 +43,7 @@ class AuthenController extends ControllerBase{
     				$data->delete();
 		 
 		   }			
-            $this->response->redirect('profile'); // เปลี่ยนเส้นทาง
+            $this->response->redirect('index'); // เปลี่ยนเส้นทาง
           }else{
             $this->flashSession->error('Password Incorrect'); // เก็บ error ที่แสดงไว้ใน flash
           }

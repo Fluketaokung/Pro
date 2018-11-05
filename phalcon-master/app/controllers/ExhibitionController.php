@@ -13,7 +13,8 @@ class ExhibitionController extends ControllerBase{
     } 
 
     public function objectAction(){
-        $ex=Borrowed::find();
+        $cn=$this->request->get('name');
+        $ex=Exhibition::find("name = '$cn'");
         $this->view->data=$ex;
     }
 

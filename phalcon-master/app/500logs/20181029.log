@@ -1,0 +1,6 @@
+[Mon, 29 Oct 18 00:00:00 +0700][ERROR] [42000]: SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION project.strtotime does not exist
+
+[Mon, 29 Oct 18 00:01:28 +0700][ERROR] [42000]: SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION project.strtotime does not exist
+
+[Mon, 29 Oct 18 00:45:14 +0700][ERROR] [42000]: SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION project.strtotime does not exist
+
