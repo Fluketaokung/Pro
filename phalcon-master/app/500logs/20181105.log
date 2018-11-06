@@ -6,3 +6,15 @@
 
 [Mon, 05 Nov 18 17:43:05 +0700][ERROR] [0]: Scanning error before 'cpe.com LIMIT :A...' when parsing: SELECT [Admin].* FROM [Admin] WHERE SFD@cpe.com LIMIT :APL0: (60)
 
+[Mon, 05 Nov 18 22:22:01 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`art_objects`, CONSTRAINT `art_objects_ibfk_2` FOREIGN KEY (`collection_name`) REFERENCES `collection` (`name`))
+
+[Mon, 05 Nov 18 22:23:40 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`art_objects`, CONSTRAINT `art_objects_ibfk_2` FOREIGN KEY (`collection_name`) REFERENCES `collection` (`name`))
+
+[Mon, 05 Nov 18 22:53:54 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Art].* FROM [Art] WHERE id = '' LIMIT :APL0:
+
+[Mon, 05 Nov 18 22:57:52 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Art].* FROM [Art] WHERE id = '' LIMIT :APL0:
+
+[Mon, 05 Nov 18 22:59:04 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Art].* FROM [Art] WHERE id = '' LIMIT :APL0:
+
+[Mon, 05 Nov 18 23:20:48 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Art].* FROM [Art] WHERE id = '' LIMIT :APL0:
+

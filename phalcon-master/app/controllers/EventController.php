@@ -22,7 +22,7 @@ class EventController extends ControllerBase{
     $this->session->set('id',$event);
 	  $this->response->redirect('event/edit');    
   }
- public function editAction(){
+  public function editAction(){
     if($this->request->isPost()){
       $name = trim($this->request->getPost('name')); // รับค่าจาก form
       $date = trim($this->request->getPost('day')); // รับค่าจาก form
