@@ -1,0 +1,38 @@
+[Wed, 07 Nov 18 19:20:06 +0700][ERROR] [0]: Column 'name' doesn't belong to any of the selected models (1), when preparing: SELECT [Museum].* FROM [Museum] WHERE name = 'HBDNF2' LIMIT :APL0:
+
+[Wed, 07 Nov 18 19:44:04 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [General].* FROM [General] WHERE id = '12609' LIMIT :APL0:
+
+[Wed, 07 Nov 18 19:45:27 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [General].* FROM [General] WHERE id = '' LIMIT :APL0:
+
+[Wed, 07 Nov 18 19:45:34 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [General].* FROM [General] WHERE id = '' LIMIT :APL0:
+
+[Wed, 07 Nov 18 20:30:22 +0700][ERROR] [0]: Column 'guide_no' doesn't belong to any of the selected models (1), when preparing: SELECT [Guide].* FROM [Guide] WHERE guide_no = '12609' LIMIT :APL0:
+
+[Wed, 07 Nov 18 22:49:46 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 22:53:22 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 22:53:37 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 22:53:40 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 22:55:01 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 22:58:32 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 23:00:22 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 23:00:52 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 23:02:42 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 23:05:33 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`art_objects`, CONSTRAINT `art_objects_ibfk_2` FOREIGN KEY (`collection_name`) REFERENCES `collection` (`name`))
+
+[Wed, 07 Nov 18 23:17:17 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`art_objects`, CONSTRAINT `art_objects_ibfk_2` FOREIGN KEY (`collection_name`) REFERENCES `collection` (`name`))
+
+[Wed, 07 Nov 18 23:34:27 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 23:36:28 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+
+[Wed, 07 Nov 18 23:40:51 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`permanent_collection`, CONSTRAINT `permanent_collection_ibfk_1` FOREIGN KEY (`id_no`) REFERENCES `art_objects` (`id_no`))
+

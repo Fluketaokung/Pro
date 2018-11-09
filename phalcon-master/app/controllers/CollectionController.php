@@ -14,13 +14,13 @@ class CollectionController extends ControllerBase{
 
     public function ObjectAction(){
         $cn=$this->request->get('name');
-        $ex=Art::find("collection_name = '$cn'");
+        $ex=Art_objects::find("collection_name = '$cn'");
         $this->view->data=$ex;
     }
 
     public function pictureAction(){
         $cn=$this->request->get('picture');
-        $ex=Art::find("picture = '$cn'");
+        $ex=Art_objects::find("picture = '$cn'");
         $this->view->data=$ex;
     }
 

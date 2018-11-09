@@ -19,7 +19,7 @@ $name=$this->session->get('name');
     </thead>
     <tbody>
         <?php foreach($data as $ex){
-            $item=Art::findfirst("id_no = '$ex->art_no'");?>
+            $item=Art_objects::findfirst("id_no = '$ex->art_no'");?>
             <tr>
                 <td><a href="<?php echo $this->url->getBaseUri().'art/picture?picture='.$item->picture; ?>" class="btn btn-danger navbar-btn"><?php echo $item->id_no ?></a></td>               
                 <td><?php echo $item->title ?></td>

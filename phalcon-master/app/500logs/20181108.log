@@ -1,0 +1,30 @@
+[Thu, 08 Nov 18 01:03:27 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`sculpture`, CONSTRAINT `sculpture_ibfk_1` FOREIGN KEY (`art_no`) REFERENCES `art_objects` (`id_no`))
+
+[Thu, 08 Nov 18 01:05:44 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`sculpture`, CONSTRAINT `sculpture_ibfk_1` FOREIGN KEY (`art_no`) REFERENCES `art_objects` (`id_no`))
+
+[Thu, 08 Nov 18 09:17:32 +0700][ERROR] [0]: Column 'name' doesn't belong to any of the selected models (1), when preparing: SELECT [Sculpture].* FROM [Sculpture] WHERE name = 'sand' LIMIT :APL0:
+
+[Thu, 08 Nov 18 09:25:07 +0700][ERROR] [0]: Column 'name' doesn't belong to any of the selected models (1), when preparing: SELECT [Art].* FROM [Art] WHERE name = 'Sur' LIMIT :APL0:
+
+[Thu, 08 Nov 18 09:25:53 +0700][ERROR] [0]: Column 'name' doesn't belong to any of the selected models (1), when preparing: SELECT [Art].* FROM [Art] WHERE name = 'Sur' LIMIT :APL0:
+
+[Thu, 08 Nov 18 09:34:01 +0700][ERROR] [0]: Column 'name' doesn't belong to any of the selected models (1), when preparing: SELECT [Sculpture].* FROM [Sculpture] WHERE name = 'TOY' LIMIT :APL0:
+
+[Thu, 08 Nov 18 09:51:57 +0700][ERROR] [0]: Column 'id_no' doesn't belong to any of the selected models (1), when preparing: SELECT [Exhibition].* FROM [Exhibition] WHERE id_no = '' LIMIT :APL0:
+
+[Thu, 08 Nov 18 10:11:58 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Collection].* FROM [Collection] WHERE id = '126090' LIMIT :APL0:
+
+[Thu, 08 Nov 18 10:12:29 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Guide_service].* FROM [Guide_service] WHERE id = '126090' LIMIT :APL0:
+
+[Thu, 08 Nov 18 10:12:38 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Guide_service].* FROM [Guide_service] WHERE id = '126090' LIMIT :APL0:
+
+[Thu, 08 Nov 18 10:15:03 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Guide_service].* FROM [Guide_service] WHERE id = '126090' LIMIT :APL0:
+
+[Thu, 08 Nov 18 10:15:06 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Guide_service].* FROM [Guide_service] WHERE id = '126090' LIMIT :APL0:
+
+[Thu, 08 Nov 18 10:15:09 +0700][ERROR] [0]: Column 'id' doesn't belong to any of the selected models (1), when preparing: SELECT [Guide_service].* FROM [Guide_service] WHERE id = '126090' LIMIT :APL0:
+
+[Thu, 08 Nov 18 10:37:10 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`sculpture`, CONSTRAINT `sculpture_ibfk_1` FOREIGN KEY (`art_no`) REFERENCES `art_objects` (`id_no`))
+
+[Thu, 08 Nov 18 10:37:18 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`sculpture`, CONSTRAINT `sculpture_ibfk_1` FOREIGN KEY (`art_no`) REFERENCES `art_objects` (`id_no`))
+

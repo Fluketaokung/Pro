@@ -2,7 +2,13 @@
 use Phalcon\Mvc\Model;
 class Borrowed extends Model{
 
-	public function getSource(){
-    return "borrowed"; // ชื่อ ตาราง ใน ฐานข้อมูล จริงๆ
+  public function initialize()
+  {
+      $this->hasOne(
+          'id_no',
+          'art_objects',
+          'id_no'
+      );
+
   }
 }

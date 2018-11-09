@@ -2,7 +2,13 @@
 use Phalcon\Mvc\Model;
 class Artist extends Model{
 
-	public function getSource(){
-    return "artist"; // ชื่อ ตาราง ใน ฐานข้อมูล จริงๆ
+  public function initialize()
+  {
+      $this->hasMany(
+          'name',
+          'art_objects',
+          'artist_name'
+      );
+
   }
 }

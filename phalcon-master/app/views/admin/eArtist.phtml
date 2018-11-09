@@ -1,0 +1,70 @@
+<?php 
+$name=$this->session->get('name');
+$act=Artist::findfirst("name = '$name'");
+echo $this->flashSession->output(); 
+?>
+
+<form action="" method="post" enctype="multipart/form-data">
+<div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">     
+    <form name="formUser" action="" method="post">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Name :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="name" name="name" value="<?php echo $act->name;?>" required="" type="text">         
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Country :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="country" name="country" value="<?php echo $act->country_of_origin;?>" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Epoch :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="epoch" name="epoch" value="<?php echo $act->epoch;?>" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Main_style :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="style" name="style" value="<?php echo $act->main_style;?>" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Born :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="born" name="born" value="<?php echo $act->date_born;?>" required="" type="date">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Died :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="died" name="died" value="<?php echo $act->date_died;?>" required="" type="date">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Description :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="description" name="description" value="<?php echo $act->description;?>" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm"></label>
+          <div class="col-sm-10">
+              <input type="file" class="form-control custom-file-input" name="file" id="file">
+              <label class="custom-file-label" for="file" accept="image/*">Choose picture</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-sm btn-success" type="submit" value="Add">
+        </div>
+      </form>
+      </div>
+      <div class="col-sm">     
+    </div>
+ </div>
+ </form>

@@ -2,7 +2,13 @@
 use Phalcon\Mvc\Model;
 class Sculpture extends Model{
 
-	public function getSource(){
-    return "sculpture"; // ชื่อ ตาราง ใน ฐานข้อมูล จริงๆ
+  public function initialize()
+  {
+      $this->belongsTo(
+          'art_no',
+          'art_objects',
+          'id_no'
+      );
+
   }
 }

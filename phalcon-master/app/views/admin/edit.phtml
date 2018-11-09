@@ -1,79 +1,16 @@
 <?php 
-$id=$this->session->get('id');
-$act=Art::findfirst("id_no = '$id'");?>
-<form action="" method="post" enctype="multipart/form-data">
-<div class="row">
-    <div class="col-sm">
-    </div>
-    <div class="col-sm">     
-    <form name="formUser" action="" method="post">
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">ID :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="id" name="id" value="<?php echo $act->id_no;?>" required="" type="text">         
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Title :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="title" name="title" value="<?php echo $act->title;?>" required="" type="text">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Artist_name :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="artist" name="artist" value="<?php echo $act->artist_name;?>" required="" type="text">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Year :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="year" name="year" value="<?php echo $act->year;?>" required="" type="text">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Description :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="description" name="description" value="<?php echo $act->description;?>" required="" type="text">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Type :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="type" name="type" value="<?php echo $act->type;?>" required="" type="text">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Epoch :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="epoch" name="epoch" value="<?php echo $act->epoch;?>" required="" type="text">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Origin :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="origin" name="origin" value="<?php echo $act->origin;?>" required="" type="text">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Collcection_name :</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="collection" name="collection" value="<?php echo $act->collection_name;?>" required="" type="text">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm"></label>
-          <div class="col-sm-10">
-              <input type="file" class="form-control custom-file-input" name="customFile" id="customFile">
-              <label class="custom-file-label" for="customFile" accept="image/*" value="<?php echo $act->picture;?>">Choose picture</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <input class="btn btn-sm btn-success" type="submit" value="Update">
-        </div>
-      </form>
-      </div>
-      <div class="col-sm">     
-    </div>
- </div>
- </form>
+$name=$this->session->get('name');
+?>
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeArt' ?>" class="btn btn-danger navbar-btn">Art</a></td>
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeArtist' ?>" class="btn btn-danger navbar-btn">Artist</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeCollection' ?>" class="btn btn-danger navbar-btn">Collection</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeExhibition' ?>" class="btn btn-danger navbar-btn">Exhibition</a></td>
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeGeneral' ?>" class="btn btn-danger navbar-btn">General</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeGuide' ?>" class="btn btn-danger navbar-btn">Guide</a></td> 
+        </tr>
+    </thead>
+</table>      

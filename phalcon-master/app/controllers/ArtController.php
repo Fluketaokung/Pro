@@ -19,7 +19,7 @@ class ArtController extends ControllerBase{
 
     public function pictureAction(){
         $cn=$this->request->get('picture');
-        $ex=Art::find("picture = '$cn'");
+        $ex=Art_objects::find("picture = '$cn'");
         $this->view->data=$ex;
     }
 

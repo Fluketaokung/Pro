@@ -22,7 +22,7 @@ $name=$this->session->get('name');
             $t = $item2->end_date;
             $ex=Borrowed::find();
             foreach($ex as $ex2){
-                $item=Art::findfirst("id_no = '$ex2->id_no'");
+                $item=Art_objects::findfirst("id_no = '$ex2->id_no'");
                 $t2 = $ex2->date_returned;
                 $show = (strtotime($t2) - strtotime($t))/  ( 60 * 60 * 24 );
                 if($show >= 0){

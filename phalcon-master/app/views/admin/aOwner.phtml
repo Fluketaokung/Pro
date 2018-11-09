@@ -1,0 +1,13 @@
+<?php 
+$id=$this->session->get('id');
+$this->session->set('id',$id); 
+?>
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/aMuseum' ?>" class="btn btn-danger navbar-btn">Museum</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/aBorrowed' ?>" class="btn btn-danger navbar-btn">Borrowed</a></td> 
+        </tr>
+    </thead>
+</table>      

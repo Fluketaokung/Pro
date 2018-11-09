@@ -2,7 +2,13 @@
 use Phalcon\Mvc\Model;
 class Collection extends Model{
 
-	public function getSource(){
-    return "collection"; // ชื่อ ตาราง ใน ฐานข้อมูล จริงๆ
+  public function initialize()
+  {
+      $this->hasMany(
+          'name',
+          'art_objects',
+          'collection_name'
+      );
+
   }
 }

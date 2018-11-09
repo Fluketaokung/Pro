@@ -5,19 +5,9 @@ $name=$this->session->get('name');
 <table data-toggle="table" class="table">
     <thead>
         <tr>
-            <td><a href="<?php echo $this->url->getBaseUri().'admin/pickedit' ?>" class="btn btn-danger navbar-btn"><?php echo 'Painting' ?></a></td> 
-            <!-- <td><a href="<?php echo $this->url->getBaseUri().'art/type?name=Sculpture' ?>" class="btn btn-danger navbar-btn"><?php echo 'Sculpture' ?></a></td> 
-            <td><a href="<?php echo $this->url->getBaseUri().'art/type?name=Other' ?>" class="btn btn-danger navbar-btn"><?php echo 'Other' ?></a></td>  -->
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/add' ?>" class="btn btn-danger navbar-btn">Add</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/edit' ?>" class="btn btn-danger navbar-btn">Update</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/delete' ?>" class="btn btn-danger navbar-btn">Delete</a></td> 
         </tr>
     </thead>
-    <!-- <tbody>
-        <?php foreach($data as $item){?>
-            <tr>
-                <td><a href="<?php echo $this->url->getBaseUri().'art/picture?name='.$item->picture; ?>" class="btn btn-danger navbar-btn"><?php echo $item->id_no ?></a></td>    
-                <td><a href="<?php echo $this->url->getBaseUri().'art/picture?picture='.$item->picture; ?>" class="btn btn-danger navbar-btn"><?php echo $item->id_no ?></a></td>               
-                <td><a href="<?php echo $this->url->getBaseUri().'art/picture?picture='.$item->picture; ?>" class="btn btn-danger navbar-btn"><?php echo $item->id_no ?></a></td>                                  
-            </tr>        
-        <?php } ?>
-    </tbody> -->
-    
 </table>      
