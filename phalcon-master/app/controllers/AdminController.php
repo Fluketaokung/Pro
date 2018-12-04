@@ -57,7 +57,7 @@ class AdminController extends ControllerBase{
         if($this->request->isPost()){
           $id1=$this->session->get('id');
           $id=trim($this->request->getPost('id'));
-          $ex7=Art::findfirst("id_no = '$id1'");
+          $ex7=Art_objects::findfirst("id_no = '$id1'");
 
           $photoUpdate = $ex7->picture;
           $ex7->save();
@@ -74,7 +74,7 @@ class AdminController extends ControllerBase{
             }
             if($isUploaded)  $photoUpdate=$photoName ;
           }     
-            $temp=new Art();
+            $temp=new Art_objects();
             $temp->id_no=trim($this->request->getPost('id'));      
             $temp->epoch=trim($this->request->getPost('epoch'));
             $temp->origin=trim($this->request->getPost('origin'));
@@ -140,7 +140,7 @@ class AdminController extends ControllerBase{
             $temp->style=$ex5->style;
             $temp->save();                
           }      
-        $event = Art::findfirst("id_no = '$id1'");
+        $event = Art_objects::findfirst("id_no = '$id1'");
         $event->delete();
         $this->response->redirect('index'); 
         }
@@ -150,7 +150,7 @@ class AdminController extends ControllerBase{
       if($this->request->isPost()){
         $id1=$this->session->get('id');
         $id=trim($this->request->getPost('id'));
-        $ex7=Art::findfirst("id_no = '$id1'");
+        $ex7=Art_objects::findfirst("id_no = '$id1'");
 
           $ex=Borrowed::findfirst("id_no = '$id1'");
           if($ex){          
@@ -176,7 +176,7 @@ class AdminController extends ControllerBase{
         if($ex5){        
           $ex5->delete();            
         }      
-      $event = Art::findfirst("id_no = '$id1'");
+      $event = Art_objects::findfirst("id_no = '$id1'");
       $event->delete();
       $this->response->redirect('index'); 
       }

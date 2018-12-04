@@ -1,0 +1,2 @@
+[Thu, 22 Nov 18 16:00:25 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`project`.`sculpture`, CONSTRAINT `sculpture_ibfk_1` FOREIGN KEY (`art_no`) REFERENCES `art_objects` (`id_no`))
+

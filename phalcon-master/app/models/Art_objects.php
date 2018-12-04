@@ -28,24 +28,24 @@ class Art_objects extends Model{
         'name'
       );
 
-          $this->belongsTo(
-            'collection_name',
-            'collection',
-            'name'
-            );
+      $this->belongsTo(
+        'collection_name',
+        'collection',
+        'name'
+      );
 
 
-            $this->hasOne(
-              'id_no',
-              'borrowed',
-              'id_no'
-              );
+      $this->hasOne(
+        'id_no',
+        'borrowed',
+        'id_no'
+      );
     
-              $this->hasOne(
-                'id_no',
-              'permanent_collection',
-              'id_no'
-                );
+      $this->hasOne(
+        'id_no',
+        'permanent_collection',
+        'id_no'
+      );
 
   }
 }
