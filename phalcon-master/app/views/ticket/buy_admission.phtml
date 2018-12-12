@@ -1,0 +1,53 @@
+
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <th data-field="name"> Exhibition </th>
+            <th data-field="start_date"> Start </th>
+            <th data-field="end_date"> End </th>
+            <th data-field="number_of_people"> number </th>    
+            <th data-field="max_people"> max_people </th> 
+            <th data-field="admission_fees"> admission_fees </th>                 
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($data as $item){?>
+            <tr>
+                <td><a class="btn btn-danger navbar-btn"><?php echo $item->name ?></a></td>
+                <td><?php echo $item->start_date ?></td>
+                <td><?php echo $item->end_date ?></td>
+                <td><?php echo $item->number_of_people ?></td>
+                <td><?php echo $item->max_people ?></td>
+                <td><?php echo $item->admission_fees ?></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>    
+<?php 
+$ex=Etc::findfirst();
+?>
+<form action="" method="post" enctype="multipart/form-data">
+<div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">   
+    <form name="formUser" action="" method="post">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Visit_id :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="id" name="id" value="" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-sm btn-success" type="submit" value="Buy now">
+        </div>
+      </form>
+      </div>
+      <div class="col-sm">     
+    </div>
+ </div>
+ </form>  
+<?php 
+echo $this->flashSession->output(); 
+?>

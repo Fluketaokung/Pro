@@ -4,19 +4,19 @@ class Art_objects extends Model{
 
   public function initialize()
   {
-      $this->hasMany(
+      $this->hasOne(
         'id_no',
         'painting',
         'art_no'
       );
 
-      $this->hasMany(
+      $this->hasOne(
         'id_no',
         'sculpter',
         'art_no'
       );
 
-      $this->hasMany(
+      $this->hasOne(
         'id_no',
         'other',
         'art_no'

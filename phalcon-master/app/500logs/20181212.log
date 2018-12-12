@@ -1,0 +1,4 @@
+[Wed, 12 Dec 18 00:40:08 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`visit_admission`, CONSTRAINT `visit_admission_ibfk_3` FOREIGN KEY (`guide_id`) REFERENCES `guide_service` (`guide_id`))
+
+[Wed, 12 Dec 18 00:40:18 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`visit_admission`, CONSTRAINT `visit_admission_ibfk_3` FOREIGN KEY (`guide_id`) REFERENCES `guide_service` (`guide_id`))
+

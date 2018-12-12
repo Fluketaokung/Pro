@@ -1,0 +1,23 @@
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <th data-field="guide_id"> Guide_id </th>
+            <th data-field="name"> Name </th>
+            <th data-field="rating"> Rating </th>
+            <th data-field="time"> Time </th> 
+            <th data-field="hire">Hire </th>                  
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($data as $item){?>
+            <tr>
+            <td><a class="btn btn-danger navbar-btn"><?php echo $item->guide_id ?></a></td>
+                <td><?php echo $item->name ?></td>
+                <td><?php echo $item->rating ?></td>
+                <td><?php echo $item->time ?></td>
+                <td><a href="<?php echo $this->url->getBaseUri().'guide/hire?id='.$item->guide_id ?>" class="btn btn-danger navbar-btn"><?php echo "Hire" ?></a></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>      

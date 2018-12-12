@@ -28,22 +28,32 @@ class AdminController extends ControllerBase{
             if($isUploaded)  $photoUpdate=$photoName;
             
           }
-          $temp=new Art();
-          $temp->id_no=trim($this->request->getPost('id'));
+          $ex=Etc::findfirst();
+          $temp=new Art_objects();
+          $temp->id_no=$ex->n_id;
           $temp->epoch=trim($this->request->getPost('epoch'));
           $temp->origin=trim($this->request->getPost('origin'));
           $temp->description=trim($this->request->getPost('description'));
           $temp->title=trim($this->request->getPost('title'));
-          $temp->type=trim($this->request->getPost('type'));
+          $type = trim($this->request->getPost('type'));
+          if($type == "painting" || $type == "sculpture" || $type == "other") $temp->type = $type; 
+          else $this->flashSession->error('Do not this type');
           $temp->year=trim($this->request->getPost('year'));
-          $temp->artist_name=trim($this->request->getPost('artist'));
-          $temp->collection_name=trim($this->request->getPost('collcection'));
+          $artist = trim($this->request->getPost('artist'));
+          if($artist != "-") $temp->artist_name = $artist;
+          else $temp->artist_name = Null;
+          $collection = trim($this->request->getPost('collcection'));
+          if($collection != "-") $temp->collection_name = $collection;
+          else $temp->collection_name = Null;
           $temp->picture=$photoUpdate;
           $type=$temp->type;
           $this->session->set('id',$temp->id_no);
           $temp->save();
-          $this->response->redirect('admin/a'.$type);
-          
+          $have=Art_objects::findfirst("id_no = '$ex->n_id'");
+          if($have){
+            $this->response->redirect('admin/a'.$type);
+          }
+          else if($type == "painting" || $type == "sculture" || $type == "other") $this->flashSession->error('Collection_name or artist_name fail');
         }
       
       }
@@ -372,14 +382,15 @@ class AdminController extends ControllerBase{
 
     public function borrowedAction(){
       $type=$this->session->get('type');
-      $act=Art::findfirst("id_no = '$id'");
+      $act=Art_objects::findfirst("id_no = '$id'");
       
     }
 
     public function apaintingAction(){
       if($this->request->isPost()){
         $temp=new Painting();
-        $temp->art_no=trim($this->request->getPost('id'));
+        $ex=Etc::findfirst();
+        $temp->art_no=$ex->n_id;
         $temp->paint_type=trim($this->request->getPost('type'));
         $temp->drawn_on=trim($this->request->getPost('drawn'));
         $temp->style=trim($this->request->getPost('style'));
@@ -393,14 +404,14 @@ class AdminController extends ControllerBase{
     public function asculptureAction(){
       if($this->request->isPost()){
         $temp=new Sculpture();
-        $temp->art_no=trim($this->request->getPost('id'));
+        $ex=Etc::findfirst();
+        $temp->art_no=$ex->n_id;
         $temp->material=trim($this->request->getPost('material'));
         $temp->height=trim($this->request->getPost('height'));
         $temp->weight=trim($this->request->getPost('weight'));
         $temp->style=trim($this->request->getPost('style'));
         $temp->save();
-        $id = trim($this->request->getPost('id'));
-        $act=Sculpture::findfirst("art_no = '$id'");
+        $act=Sculpture::findfirst("art_no = '$ex->n_id'");
         if($act){
           $this->session->set('id',$id);
           $this->response->redirect('admin/aOwner');      
@@ -413,39 +424,48 @@ class AdminController extends ControllerBase{
 
     public function aArtistAction(){
       if($this->request->isPost()){
-        $photoUpdate='';
-          if($this->request->hasFiles() == true){
-            $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-            $uploads = $this->request->getUploadedFiles();
-            $isUploaded = false;			
-            foreach($uploads as $upload){
-              if(in_array($upload->gettype(), $allowed)){					
-                $photoName=md5(uniqid(rand(), true)).strtolower($upload->getname());
-                $path = '../public/img/database/'.$photoName;
-                ($upload->moveTo($path)) ? $isUploaded = true : $isUploaded = false;
-              }
-            }
-            if($isUploaded)  $photoUpdate=$photoName;
-            
-          }
-        $temp=new Artist();
-        $temp->name=trim($this->request->getPost('name'));
-        $temp->country_of_origin=trim($this->request->getPost('country'));
-        $temp->epoch=trim($this->request->getPost('epoch'));
-        $temp->main_style=trim($this->request->getPost('style'));
-        $temp->date_born=trim($this->request->getPost('born'));
-        $temp->date_died=trim($this->request->getPost('died'));
-        $temp->description=trim($this->request->getPost('description'));
-        $temp->picture=$photoUpdate;
-        $temp->save();
-        $name = trim($this->request->getPost('name'));
-        $act=Artist::findfirst("name = '$name'");
-        if($act){
-          $this->response->redirect('index');      
+        $name1 = trim($this->request->getPost('name'));
+        $ac=Artist::findfirst("name = '$name1'");
+        if($ac){
+          $this->response->redirect('admin/aArtist');  
+          $this->flashSession->error('Database have data of this artist!!!');    
         }
-        else{
-          $this->flashSession->error('Not Found');
-        }    
+        else {
+          $photoUpdate='';
+            if($this->request->hasFiles() == true){
+              $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+              $uploads = $this->request->getUploadedFiles();
+              $isUploaded = false;			
+              foreach($uploads as $upload){
+                if(in_array($upload->gettype(), $allowed)){					
+                  $photoName=md5(uniqid(rand(), true)).strtolower($upload->getname());
+                  $path = '../public/img/database/'.$photoName;
+                  ($upload->moveTo($path)) ? $isUploaded = true : $isUploaded = false;
+                }
+              }
+              if($isUploaded)  $photoUpdate=$photoName;
+              
+            }
+          $temp=new Artist();
+          $temp->name=trim($this->request->getPost('name'));
+          $temp->country_of_origin=trim($this->request->getPost('country'));
+          $temp->epoch=trim($this->request->getPost('epoch'));
+          $temp->main_style=trim($this->request->getPost('style'));
+          $temp->date_born=trim($this->request->getPost('born'));
+          $temp->date_died=trim($this->request->getPost('died'));
+          $temp->description=trim($this->request->getPost('description'));
+          $temp->picture=$photoUpdate;
+          $temp->save();
+          $name = trim($this->request->getPost('name'));
+          $act=Artist::findfirst("name = '$name'");
+          if($act){
+            $this->response->redirect('admin/aArtist');  
+            $this->flashSession->success('Add this artist is success');    
+          }
+          else{
+            $this->flashSession->error('Not Found');
+          } 
+        }   
       }
     }
 
@@ -506,7 +526,8 @@ class AdminController extends ControllerBase{
     public function aotherAction(){
       if($this->request->isPost()){
         $temp=new Other();
-        $temp->art_no=trim($this->request->getPost('id'));
+        $ex=Etc::findfirst();
+        $temp->art_no=$ex->n_id;
         $temp->style=trim($this->request->getPost('style'));
         $temp->type=trim($this->request->getPost('type'));
         $temp->save();
@@ -532,15 +553,20 @@ class AdminController extends ControllerBase{
 
     public function aBorrowedAction(){
       if($this->request->isPost()){
-        $id = trim($this->request->getPost('id'));
         $temp=new Borrowed();
-        $temp->id_no=trim($this->request->getPost('id'));
+        $ex=Etc::findfirst();
+        $temp->id_no=$ex->n_id;
         $temp->date_borrowed=trim($this->request->getPost('start'));
         $temp->date_returned=trim($this->request->getPost('end'));
         $temp->save();
-        $act=Borrowed::findfirst("id_no = '$id'");
+        $act=Borrowed::findfirst("id_no = '$ex->n_id'");
         if($act){
-          $this->response->redirect('index');   
+          $n = $ex->n_id;
+          $n = $n + 1;
+          $ex->n_id = $n;
+          $ex->save();
+          $this->response->redirect('admin/aArt');   
+          $this->flashSession->success('Add art_object is success');
         }
         else{
           $this->flashSession->error('Not Found');
@@ -551,16 +577,21 @@ class AdminController extends ControllerBase{
 
     public function aMuseumAction(){
       if($this->request->isPost()){
-        $id = trim($this->request->getPost('id'));
-        $temp=new Museum();
-        $temp->id_no=trim($this->request->getPost('id'));
+        $temp=new Permanent_collection();
+        $ex=Etc::findfirst();
+        $temp->id_no=$ex->n_id;
         $temp->cost=trim($this->request->getPost('cost'));
         $temp->status=trim($this->request->getPost('status'));
         $temp->date_acquired=trim($this->request->getPost('get'));
         $temp->save();
-        $act=Museum::findfirst("id_no = '$id'");
+        $act=Permanent_collection::findfirst("id_no = '$ex->n_id'");
         if($act){
-          $this->response->redirect('index');   
+          $n = $ex->n_id;
+          $n = $n + 1;
+          $ex->n_id = $n;
+          $ex->save();  
+          $this->response->redirect('admin/aArt'); 
+          $this->flashSession->success('Add art_object is success');
         }
         else{
           $this->flashSession->error('Not Found');
@@ -571,21 +602,30 @@ class AdminController extends ControllerBase{
 
     public function aCollectionAction(){
       if($this->request->isPost()){
-        $temp=new Collection();
-        $temp->name=trim($this->request->getPost('name'));
-        $temp->phone=trim($this->request->getPost('phone'));
-        $temp->address=trim($this->request->getPost('address'));
-        $temp->description=trim($this->request->getPost('description'));
-        $temp->type=trim($this->request->getPost('type'));
-        $temp->contact_person=trim($this->request->getPost('person'));
-        $temp->save();
-        $name=trim($this->request->getPost('name'));
-        $act=Collection::findfirst("name = '$name'");
-        if($act){
-          $this->response->redirect('index');   
+        $name1=trim($this->request->getPost('name'));
+        $have=Collection::findfirst("name = '$name1'");
+        if($have){
+          $this->response->redirect('admin/aCollection');  
+          $this->flashSession->error('Database have data of this collection'); 
         }
         else{
-          $this->flashSession->error('Not Found');
+          $temp=new Collection();
+          $temp->name=trim($this->request->getPost('name'));
+          $temp->phone=trim($this->request->getPost('phone'));
+          $temp->address=trim($this->request->getPost('address'));
+          $temp->description=trim($this->request->getPost('description'));
+          $temp->type=trim($this->request->getPost('type'));
+          $temp->contact_person=trim($this->request->getPost('person'));
+          $temp->save();
+          $name=trim($this->request->getPost('name'));
+          $act=Collection::findfirst("name = '$name'");
+          if($act){
+            $this->response->redirect('admin/aCollection');  
+            $this->flashSession->success('Add this collection is success'); 
+          }
+          else{
+            $this->flashSession->error('Not Found');
+          } 
         } 
       }
           
@@ -602,7 +642,7 @@ class AdminController extends ControllerBase{
         $temp2->type=trim($this->request->getPost('type'));
         $temp2->contact_person=trim($this->request->getPost('person'));
         $temp2->save();
-        $ex=Art::find("collection_name = '$name'");
+        $ex=Art_objects::find("collection_name = '$name'");
         foreach($ex as $item){
           $item->collection_name = trim($this->request->getPost('name'));
           $item->save();
@@ -618,7 +658,7 @@ class AdminController extends ControllerBase{
       if($this->request->isPost()){
         $name=$this->session->get('name');
         $temp= Collection::findfirst("name = '$name'");
-        $ex=Art::find("collection_name = '$temp->name'");
+        $ex=Art_objects::find("collection_name = '$temp->name'");
           foreach($ex as $item){
             $item->collection_name = Null;
             $item->save();
@@ -635,7 +675,9 @@ class AdminController extends ControllerBase{
         $temp->name=trim($this->request->getPost('name'));
         $temp->start_date=trim($this->request->getPost('start'));
         $temp->end_date=trim($this->request->getPost('end'));
-        $temp->number_of_people=trim($this->request->getPost('number'));
+        $temp->number_of_people = 0;
+        $temp->max_people=trim($this->request->getPost('number'));
+        $temp->admission_fees=trim($this->request->getPost('fee'));
         $temp->save();
         $name=trim($this->request->getPost('name'));
         $act=Exhibition::findfirst("name = '$name'");

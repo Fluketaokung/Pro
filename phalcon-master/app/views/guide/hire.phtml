@@ -1,0 +1,54 @@
+
+<table data-toggle="table" class="table">
+    <thead>
+        <tr>
+            <th data-field="guide_id"> Guide_id </th>
+            <th data-field="name"> Name </th>
+            <th data-field="rating"> Rating </th>
+            <th data-field="time"> Time </th>                
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($data as $item){?>
+            <tr>
+            <td><a class="btn btn-danger navbar-btn"><?php echo $item->guide_id ?></a></td>
+                <td><?php echo $item->name ?></td>
+                <td><?php echo $item->rating ?></td>
+                <td><?php echo $item->time ?></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>     
+<?php 
+$ex=Etc::findfirst();
+?>
+<form action="" method="post" enctype="multipart/form-data">
+<div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">   
+    <form name="formUser" action="" method="post">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">Visit_id :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="vid" name="vid" value="" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label col-form-label-sm">general_id :</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="gid" name="gid" value="" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-sm btn-success" type="submit" value="Hire now">
+        </div>
+      </form>
+      </div>
+      <div class="col-sm">     
+    </div>
+ </div>
+ </form>  
+<?php 
+echo $this->flashSession->output(); 
+?>

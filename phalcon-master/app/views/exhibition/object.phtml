@@ -44,20 +44,21 @@ $name=$this->session->get('name');
         } ?>
     </tbody>
     <tbody>
-        <?php foreach($data as $item){
+        <?php 
+        $MS=Permanent_collection::find();
+        foreach($MS as $MS2){
             ?>
-            <tr>
-                
-                <td><a href="<?php echo $this->url->getBaseUri().'collection/picture?picture='.$item->name; ?>" class="btn btn-danger navbar-btn"><?php echo $item->name ?></a></td>               
-    
-                <!-- <td><?php echo $item->artist_name ?></td>
+            <tr>           
+                <td><a href="<?php echo $this->url->getBaseUri().'collection/picture?picture='.$item->id_no; ?>" class="btn btn-danger navbar-btn"><?php echo $item->id_no ?></a></td>               
+                <td><?php echo $item->title ?></td>
+                <td><?php echo $item->artist_name ?></td>
                 <td><?php echo $item->year ?></td>
                 <td><?php echo $item->description ?></td>
                 <td><?php echo $item->type ?></td>
                 <td><?php echo $item->epoch ?></td>
                 <td><?php echo $item->origin ?></td>
                 <td><?php echo $item->collection_name ?></td>
-                 -->
+                
             </tr>        
         <?php } ?>
     </tbody>

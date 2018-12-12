@@ -1,6 +1,6 @@
 <?php
 use Phalcon\Mvc\Model;
-class Museum_goer extends Model{
+class Etc extends Model{
 
   public function initialize()
   {

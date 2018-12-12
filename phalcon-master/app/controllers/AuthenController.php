@@ -30,27 +30,28 @@ class AuthenController extends ControllerBase{
             $this->session->set('memberAuthen', $member->id); // กำหนด session
 			      $this->session->set('memberEmail', $member->username);
 					
-			if($rememberMe==1) {
-					$hour = time() + 3600;
-					 
-					$this->cookies->set('username',$email,$hour );
-					$this->cookies->set('password',$pass,$hour );
-      } 
-      else {     
-					$data = $this->cookies->get('username');
-    				$data->delete();
-					$data = $this->cookies->get('password');
-    				$data->delete();
-		 
-		   }			
-            $this->response->redirect('index'); // เปลี่ยนเส้นทาง
-          }else{
-            $this->flashSession->error('Password Incorrect'); // เก็บ error ที่แสดงไว้ใน flash
-          }
-        /*}else{
-          $this->flashSession->error('User is blocked'); // เก็บ error ที่แสดงไว้ใน flash
-        }*/
-      }else{
+          if($rememberMe==1) {
+              $hour = time() + 3600;
+              
+              $this->cookies->set('username',$email,$hour );
+              $this->cookies->set('password',$pass,$hour );
+          } 
+          else {     
+              $data = $this->cookies->get('username');
+                $data->delete();
+              $data = $this->cookies->get('password');
+                $data->delete();
+        
+          }			
+                $this->response->redirect('index'); // เปลี่ยนเส้นทาง
+              }else{
+                $this->flashSession->error('Password Incorrect'); // เก็บ error ที่แสดงไว้ใน flash
+              }
+            /*}else{
+              $this->flashSession->error('User is blocked'); // เก็บ error ที่แสดงไว้ใน flash
+            }*/
+      }
+      else{
         $this->flashSession->error('Not Found'); // เก็บ error ที่แสดงไว้ใน flash
       }
     }
