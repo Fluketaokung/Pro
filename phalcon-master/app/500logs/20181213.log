@@ -1,0 +1,10 @@
+[Thu, 13 Dec 18 00:22:30 +0700][ERROR] [0]: Column 'exhibition_name' doesn't belong to any of the selected models (1), when preparing: SELECT [Exhibition].* FROM [Exhibition] WHERE exhibition_name = 'Phaifah'
+
+[Thu, 13 Dec 18 00:22:39 +0700][ERROR] [0]: Column 'exhibition_name' doesn't belong to any of the selected models (1), when preparing: SELECT [Exhibition].* FROM [Exhibition] WHERE exhibition_name = 'Phaifah'
+
+[Thu, 13 Dec 18 00:23:50 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`guide_exhibition`, CONSTRAINT `guide_exhibition_ibfk_1` FOREIGN KEY (`exhibition_name`) REFERENCES `exhibition` (`name`))
+
+[Thu, 13 Dec 18 00:25:43 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`guide_exhibition`, CONSTRAINT `guide_exhibition_ibfk_1` FOREIGN KEY (`exhibition_name`) REFERENCES `exhibition` (`name`))
+
+[Thu, 13 Dec 18 00:26:06 +0700][ERROR] [23000]: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`project`.`guide_exhibition`, CONSTRAINT `guide_exhibition_ibfk_1` FOREIGN KEY (`exhibition_name`) REFERENCES `exhibition` (`name`))
+

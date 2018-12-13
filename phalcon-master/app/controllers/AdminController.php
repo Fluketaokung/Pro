@@ -351,6 +351,90 @@ class AdminController extends ControllerBase{
       }
     }
 
+    public function SeBorrowedAction(){
+      if($this->request->isPost()){
+        $id = trim($this->request->getPost('id'));
+        $have=Borrowed::findFirst("id_no = '$id'");
+        if(!$have){
+          $this->flashSession->error('No art_object here!!!');
+        }
+        else{
+          $this->session->set('id',$id);
+          $this->response->redirect('admin/eBorrowed');
+        }      
+      }
+    }
+
+    public function SeMuseumAction(){
+      if($this->request->isPost()){
+        $id = trim($this->request->getPost('id'));
+        $have=Permanent_collection::findFirst("id_no = '$id'");
+        if(!$have){
+          $this->flashSession->error('No art_object here!!!');
+        }
+        else{
+          $this->session->set('id',$id);
+          $this->response->redirect('admin/eMuseum');
+        }      
+      }
+    }
+
+    public function SeOtherAction(){
+      if($this->request->isPost()){
+        $id = trim($this->request->getPost('id'));
+        $have=Other::findFirst("art_no = '$id'");
+        if(!$have){
+          $this->flashSession->error('No art_object here!!!');
+        }
+        else{
+          $this->session->set('id',$id);
+          $this->response->redirect('admin/eOther');
+        }      
+      }
+    }
+
+    public function SePaintingAction(){
+      if($this->request->isPost()){
+        $id = trim($this->request->getPost('id'));
+        $have=Painting::findFirst("art_no = '$id'");
+        if(!$have){
+          $this->flashSession->error('No art_object here!!!');
+        }
+        else{
+          $this->session->set('id',$id);
+          $this->response->redirect('admin/ePainting');
+        }      
+      }
+    }
+
+    public function SeSculptureAction(){
+      if($this->request->isPost()){
+        $id = trim($this->request->getPost('id'));
+        $have=Sculpture::findFirst("art_no = '$id'");
+        if(!$have){
+          $this->flashSession->error('No art_object here!!!');
+        }
+        else{
+          $this->session->set('id',$id);
+          $this->response->redirect('admin/eSculpture');
+        }      
+      }
+    }
+
+    public function SeVisitorAction(){
+      if($this->request->isPost()){
+        $id = trim($this->request->getPost('id'));
+        $have=Visitor::findFirst("visit_id = '$id'");
+        if(!$have){
+          $this->flashSession->error('No visitor here!!!');
+        }
+        else{
+          $this->session->set('id',$id);
+          $this->response->redirect('admin/eVisitor');
+        }      
+      }
+    }
+
     public function SdGuideAction(){
       if($this->request->isPost()){
         $id = trim($this->request->getPost('id'));
@@ -386,10 +470,39 @@ class AdminController extends ControllerBase{
       
     }
 
-    public function apaintingAction(){
+    public function ePaintingAction(){
+      if($this->request->isPost()){
+        $id=$this->session->get('id');
+        $temp=Painting::findfirst("art_no = '$id'");
+        $temp->paint_type=trim($this->request->getPost('type'));
+        $temp->drawn_on=trim($this->request->getPost('drawn'));
+        $temp->style=trim($this->request->getPost('style'));
+        $temp->save();
+        $this->response->redirect('admin/SePainting');   
+        $this->flashSession->success('Update this art_object successful');
+      }
+          
+    }
+
+    public function eSculptureAction(){
+      if($this->request->isPost()){
+        $id=$this->session->get('id');
+        $temp=Sculpture::findfirst("art_no = '$id'");
+        $temp->material=trim($this->request->getPost('material'));
+        $temp->height=trim($this->request->getPost('height'));
+        $temp->weight=trim($this->request->getPost('weight'));
+        $temp->style=trim($this->request->getPost('style'));
+        $temp->save();
+        $this->response->redirect('admin/SeSculpture');   
+        $this->flashSession->success('Update this art_object successful');
+      }
+          
+    }
+
+
+    public function aPaintingAction(){
       if($this->request->isPost()){
         $temp=new Painting();
-        $ex=Etc::findfirst();
         $temp->art_no=$ex->n_id;
         $temp->paint_type=trim($this->request->getPost('type'));
         $temp->drawn_on=trim($this->request->getPost('drawn'));
@@ -487,7 +600,8 @@ class AdminController extends ControllerBase{
             
           }
         $name=$this->session->get('name');
-        $temp=Artist::findfirst("name = '$name'");;
+        $temp=Artist::findfirst("name = '$name'");
+        $name2=$temp->name;
         $temp->name=trim($this->request->getPost('name'));
         $temp->country_of_origin=trim($this->request->getPost('country'));
         $temp->epoch=trim($this->request->getPost('epoch'));
@@ -500,10 +614,11 @@ class AdminController extends ControllerBase{
         $name = trim($this->request->getPost('name'));
         $act=Artist::findfirst("name = '$name'");
         if($act){
-          $this->response->redirect('index');      
+          $this->response->redirect('admin/SeArtist');
+          $this->flashSession->success('Update this collection successful');    
         }
         else{
-          $this->flashSession->error('Not Found');
+          $this->flashSession->error('Repeat name'); 
         }    
       }
     }
@@ -547,6 +662,20 @@ class AdminController extends ControllerBase{
       
     }
 
+    public function eOtherAction(){
+      if($this->request->isPost()){
+        $id=$this->session->get('id');
+        $temp=Other::findfirst("art_no = '$id'");
+        $ex=Etc::findfirst();
+        $temp->style=trim($this->request->getPost('style'));
+        $temp->type=trim($this->request->getPost('type'));
+        $temp->save();
+        $this->response->redirect('admin/SeOther');   
+        $this->flashSession->success('Update this art_object successful');
+      }
+          
+    }
+
     public function aOwnerAction(){
           
     }
@@ -566,11 +695,39 @@ class AdminController extends ControllerBase{
           $ex->n_id = $n;
           $ex->save();
           $this->response->redirect('admin/aArt');   
-          $this->flashSession->success('Add art_object is success');
+          $this->flashSession->success('Add art_object successful');
         }
         else{
           $this->flashSession->error('Not Found');
         } 
+      }
+          
+    }
+
+    public function eBorrowedAction(){
+      if($this->request->isPost()){
+        $id=$this->session->get('id');
+        $temp=Borrowed::findfirst("id_no = '$id'");
+        $temp->date_borrowed=trim($this->request->getPost('start'));
+        $temp->date_returned=trim($this->request->getPost('end'));
+        $temp->save();
+        $this->response->redirect('admin/SeBorrowed');   
+        $this->flashSession->success('Update this art_object successful');
+      }
+          
+    }
+
+    public function eMuseumAction(){
+      if($this->request->isPost()){
+        $id=$this->session->get('id');
+        $temp=Permanent_collection::findfirst("id_no = '$id'");
+        $temp->cost=trim($this->request->getPost('cost'));
+        $temp->status=trim($this->request->getPost('status'));
+        $temp->date_acquired=trim($this->request->getPost('get'));
+        $temp->save();
+        $act=Permanent_collection::findfirst("id_no = '$ex->n_id'");
+        $this->response->redirect('admin/SeMuseum');   
+        $this->flashSession->success('Update this art_object successful'); 
       }
           
     }
@@ -634,22 +791,35 @@ class AdminController extends ControllerBase{
     public function eCollectionAction(){
       if($this->request->isPost()){
         $name=$this->session->get('name');
-        $temp2=new Collection();
-        $temp2->name=trim($this->request->getPost('name'));
-        $temp2->phone=trim($this->request->getPost('phone'));
-        $temp2->address=trim($this->request->getPost('address'));
-        $temp2->description=trim($this->request->getPost('description'));
-        $temp2->type=trim($this->request->getPost('type'));
-        $temp2->contact_person=trim($this->request->getPost('person'));
-        $temp2->save();
-        $ex=Art_objects::find("collection_name = '$name'");
-        foreach($ex as $item){
-          $item->collection_name = trim($this->request->getPost('name'));
-          $item->save();
+        $cn = Collection::findfirst("name = '$name'");
+        $new_name = trim($this->request->getPost('name'));
+        if($cn->name == $new_name){
+          $cn->phone=trim($this->request->getPost('phone'));
+          $cn->address=trim($this->request->getPost('address'));
+          $cn->description=trim($this->request->getPost('description'));
+          $cn->type=trim($this->request->getPost('type'));
+          $cn->contact_person=trim($this->request->getPost('person'));
+          $cn->save();
         }
-        $event = Collection::findfirst("name = '$name'");
-        $event->delete();
-        $this->response->redirect('index'); 
+        else{
+          $temp2=new Collection();
+          $temp2->name=trim($this->request->getPost('name'));
+          $temp2->phone=trim($this->request->getPost('phone'));
+          $temp2->address=trim($this->request->getPost('address'));
+          $temp2->description=trim($this->request->getPost('description'));
+          $temp2->type=trim($this->request->getPost('type'));
+          $temp2->contact_person=trim($this->request->getPost('person'));
+          $temp2->save();
+          $ex=Art_objects::find("collection_name = '$name'");
+          foreach($ex as $item){
+            $item->collection_name = trim($this->request->getPost('name'));
+            $item->save();
+          }
+          $event = Collection::findfirst("name = '$name'");
+          $event->delete();        
+        }
+        $this->response->redirect('admin/SeCollection');
+        $this->flashSession->success('Update this collection successful');
       }
           
     }
@@ -704,16 +874,18 @@ class AdminController extends ControllerBase{
 
     public function eExhibitionAction(){
       if($this->request->isPost()){
-        $temp=new Exhibition();
-        $temp->name=trim($this->request->getPost('name'));
+        $name = trim($this->request->getPost('name'));
+        $temp=Exhibition::findfirst("name = '$name'");
         $temp->start_date=trim($this->request->getPost('start'));
         $temp->end_date=trim($this->request->getPost('end'));
-        $temp->number_of_people=trim($this->request->getPost('number'));
+        $temp->max_people=trim($this->request->getPost('max_number'));
+        $temp->admission_fees=trim($this->request->getPost('fee'));
         $temp->save();
         $name=trim($this->request->getPost('name'));
         $act=Exhibition::findfirst("name = '$name'");
         if($act){
-          $this->response->redirect('index');   
+          $this->response->redirect('admin/SeExhibition'); 
+          $this->flashSession->success('Update this exhibition successful');  
         }
         else{
           $this->flashSession->error('Not Found');
@@ -724,17 +896,25 @@ class AdminController extends ControllerBase{
 
     public function aGeneralAction(){
       if($this->request->isPost()){
-        $temp=new General_admission();
-        $temp->general_id=trim($this->request->getPost('id'));
-        $temp->save();
         $id=trim($this->request->getPost('id'));
-        $act=General_admission::findfirst("general_id = '$id'");
-        if($act){
-          $this->response->redirect('index');   
+        $ac=General_admission::findfirst("general_id = '$id'");
+        if($ac){
+          $this->response->redirect('admin/aGeneral'); 
+          $this->flashSession->error('Databade have data of this general_id');  
         }
         else{
-          $this->flashSession->error('Not Found');
-        } 
+          $temp=new General_admission();
+          $temp->general_id=trim($this->request->getPost('id'));
+          $temp->save();
+          $act=General_admission::findfirst("general_id = '$id'");
+          if($act){
+            $this->response->redirect('admin/aGeneral'); 
+            $this->flashSession->success('Add this general_id is success');  
+          }
+          else{
+            $this->flashSession->error('Databade have data of this general_id');
+          } 
+        }
       }
           
     }
@@ -768,41 +948,102 @@ class AdminController extends ControllerBase{
 
     public function aGuideAction(){
       if($this->request->isPost()){
-        $temp=new Guide_service();
-        $temp->guide_id=trim($this->request->getPost('id'));
+        $ex = Etc::findfirst();       
+          $temp=new Guide_service();
+          $temp->guide_id = $ex->n_guide;
+          $temp->name=trim($this->request->getPost('name'));
+          $temp->rating=trim($this->request->getPost('rating'));
+          $temp->time=trim($this->request->getPost('time'));
+          $temp->save();
+          $act=Guide_service::findfirst("guide_id = '$ex->n_guide'");
+          if($act){
+            $n = $ex->n_guide;
+            $n = $n + 1;
+            $ex->n_guide = $n;
+            $ex->save();
+            $this->response->redirect('admin/aGuide');   
+            $this->flashSession->success('Add this guide is success');
+          }
+          else{
+            $this->flashSession->error('Not Found');
+          } 
+        
+      }
+          
+    }
+    public function aVisitorAction(){
+      if($this->request->isPost()){
+        $ex = Etc::findfirst();
+        $temp=new Visitor();
+        $temp->visit_id = $ex->n_visit;
         $temp->name=trim($this->request->getPost('name'));
-        $temp->rating=trim($this->request->getPost('rating'));
-        $temp->time=trim($this->request->getPost('time'));
         $temp->save();
-        $id=trim($this->request->getPost('id'));
-        $act=Guide_service::findfirst("guide_id = '$id'");
+        $act=Visitor::findfirst("visit_id = '$ex->n_visit'");
         if($act){
-          $this->response->redirect('index');   
+          $n = $ex->n_visit;
+          $n = $n + 1;
+          $ex->n_visit = $n;
+          $ex->save();
+          $this->response->redirect('admin/aVisitor');   
+          $this->flashSession->success('Add this visitor is success');
         }
         else{
           $this->flashSession->error('Not Found');
         } 
+        
       }
+          
+    }
+
+    public function aGuide_exhibitionAction(){
+      $this->view->data=$ex;
+      if($this->request->isPost()){
+          $Ename = trim($this->request->getPost('name'));
+          $data2=Exhibition::findfirst("name = '$Ename'");
+          $data=Guide_exhibition::find("exhibition_name = '$Ename'");
+          $have = 0;
+          $id=$this->request->get('id');
+          $data3=Guide_service::findfirst("guide_id = '$id'");
+          if($data2 && $data3){
+            foreach($data as $item){
+              if($item->guide_id == $id) $have = 1;
+            }
+            if($have == 0){
+                $temp = new Guide_exhibition();
+                $temp->guide_id = $id;
+                $temp->exhibition_name = $Ename;
+                $temp->save();
+                $this->flashSession->success('Added successful'); 
+            }
+            else $this->flashSession->error('This guide going to join this exhibition!!!');
+          }
+          else $this->flashSession->error('Do not have this exhibition or this guide!!!');
+      }  
           
     }
 
     public function eGuideAction(){
       if($this->request->isPost()){
-        $temp=new Guide_service();
-        $temp->guide_id=trim($this->request->getPost('id'));
+        $id=$this->session->get('id');
+        $temp=Guide_service::findfirst("guide_id = '$id'");
         $temp->name=trim($this->request->getPost('name'));
         $temp->rating=trim($this->request->getPost('rating'));
         $temp->time=trim($this->request->getPost('time'));
         $temp->save();
+        $this->response->redirect('admin/SeGuide');   
+        $this->flashSession->success('Update this guide successful');
+      }
+          
+    }
+
+    public function eVisitorAction(){
+      if($this->request->isPost()){
         $id=$this->session->get('id');
-        $act=Guide_service::findfirst("guide_id = '$id'");
-        $act->delete();
-        if(!$act){
-          $this->response->redirect('index');   
-        }
-        else{
-          $this->flashSession->error('Not Found');
-        } 
+        $temp=Visitor::findfirst("visit_id = '$id'");
+        $temp->name=trim($this->request->getPost('name'));
+        $temp->save();
+        $this->response->redirect('admin/SeVisitor');   
+        $this->flashSession->success('Update this visitor successful');
       }
           
     }

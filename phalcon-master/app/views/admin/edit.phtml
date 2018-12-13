@@ -6,11 +6,23 @@ $name=$this->session->get('name');
     <thead>
         <tr>
             <td><a href="<?php echo $this->url->getBaseUri().'admin/SeArt' ?>" class="btn btn-danger navbar-btn">Art</a></td>
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeBorrowed' ?>" class="btn btn-danger navbar-btn">Borrowed</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SePainting' ?>" class="btn btn-danger navbar-btn">Painting</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeMuseum' ?>" class="btn btn-danger navbar-btn">Museum</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeOther' ?>" class="btn btn-danger navbar-btn">Other</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeSculpture' ?>" class="btn btn-danger navbar-btn">Sculpture</a></td> 
             <td><a href="<?php echo $this->url->getBaseUri().'admin/SeArtist' ?>" class="btn btn-danger navbar-btn">Artist</a></td> 
+        </tr>
+    </thead>
+    <thead>
+        <tr>
             <td><a href="<?php echo $this->url->getBaseUri().'admin/SeCollection' ?>" class="btn btn-danger navbar-btn">Collection</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeVisitor' ?>" class="btn btn-danger navbar-btn">Visitor</a></td>
             <td><a href="<?php echo $this->url->getBaseUri().'admin/SeExhibition' ?>" class="btn btn-danger navbar-btn">Exhibition</a></td>
             <td><a href="<?php echo $this->url->getBaseUri().'admin/SeGeneral' ?>" class="btn btn-danger navbar-btn">General</a></td> 
             <td><a href="<?php echo $this->url->getBaseUri().'admin/SeGuide' ?>" class="btn btn-danger navbar-btn">Guide</a></td> 
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeVexhibition' ?>" class="btn btn-danger navbar-btn">Visit_exhibition</a></td>
+            <td><a href="<?php echo $this->url->getBaseUri().'admin/SeVadmission' ?>" class="btn btn-danger navbar-btn">Visit_admission</a></td>
         </tr>
     </thead>
 </table>      

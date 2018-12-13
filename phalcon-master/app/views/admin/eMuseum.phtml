@@ -1,7 +1,9 @@
 <?php 
+$id=$this->session->get('id');
+$ex=Permanent_collection::findfirst("id_no = '$id'");
 echo $this->flashSession->output(); 
-$ex=Etc::findfirst();
 ?>
+
 
 <form action="" method="post" enctype="multipart/form-data">
 <div class="row">
@@ -12,33 +14,33 @@ $ex=Etc::findfirst();
         <div class="form-group row">
           <label class="col-sm-2 col-form-label col-form-label-sm">ID :</label>
           <div class="col-sm-10">
-            <?php echo $ex->n_guide ?>
+          <?php echo $id ?>         
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Name :</label>
+          <label class="col-sm-2 col-form-label col-form-label-sm">Cost :</label>
           <div class="col-sm-10">
-            <input class="form-control" id="name" name="name" value="" required="" type="text">
+            <input class="form-control" id="cost" name="cost" value="<?php echo $ex->cost ?>" required="" type="text">
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Rating :</label>
+          <label class="col-sm-2 col-form-label col-form-label-sm">Status :</label>
           <div class="col-sm-10">
-            <input class="form-control" id="rating" name="rating" value="" required="" type="text">
+            <input class="form-control" id="status" name="status" value="<?php echo $ex->status ?>" required="" type="text">
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label col-form-label-sm">Time :</label>
+          <label class="col-sm-2 col-form-label col-form-label-sm">date_acquired :</label>
           <div class="col-sm-10">
-            <input class="form-control" id="time" name="time" value="" required="" type="text">
+            <input class="form-control" id="get" name="get" value="<?php echo $ex->date_acquired ?>" required="" type="date">
           </div>
         </div>
         <div class="form-group">
-          <input class="btn btn-sm btn-success" type="submit" value="Add">
+          <input class="btn btn-sm btn-success" type="submit" value="Update">
         </div>
       </form>
       </div>
       <div class="col-sm">     
     </div>
  </div>
- </form>   
+ </form>  
